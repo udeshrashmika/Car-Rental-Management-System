@@ -1,4 +1,4 @@
-package com.example.car_rental.repository; // MEKA WENAS UNA
+package com.example.car_rental.repository;
 
 import com.example.car_rental.model.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
