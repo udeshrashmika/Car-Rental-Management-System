@@ -1,7 +1,7 @@
-package com.carrental.carrentalservice.service; // MEKA WENAS UNA
+package com.example.car_rental.service; // MEKA WENAS UNA
 
-import com.carrental.carrentalservice.model.Vehicle;
-import com.carrental.carrentalservice.repository.VehicleRepository;
+import com.example.car_rental.model.Vehicle;
+import com.example.car_rental.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,26 +14,30 @@ public class VehicleService {
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    public Vehicle saveVehicle(Vehicle vehicle) {
-        return vehicleRepository.save(vehicle);
-    }
 
     public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
     }
 
-    public void updateStatus(Long id, String newStatus) {
-        Optional<Vehicle> vehicleOptional = vehicleRepository.findById(id);
-        if (vehicleOptional.isPresent()) {
-            Vehicle vehicle = vehicleOptional.get();
-            vehicle.setStatus(newStatus);
-            vehicleRepository.save(vehicle);
-        } else {
-            throw new RuntimeException("Vehicle not found with id: " + id);
-        }
+
+    public void saveVehicle(Vehicle vehicle) {
+        vehicleRepository.save(vehicle);
+    }
+    public long countTotal() {
+        return vehicleRepository.count();
     }
 
-    public long getCountByStatus(String status) {
+    public long countByStatus(String status) {
         return vehicleRepository.countByStatus(status);
     }
+
+    public List<Vehicle> getVehiclesByStatus(String status) {
+        return vehicleRepository.findByStatus(status);
+    }
+    public void updateStatus(Long vehicleId, String newStatus) {
+        Vehicle vehicle = vehicleRepository.findById(vehicleId).orElseThrow();
+        vehicle.setStatus(newStatus);
+        vehicleRepository.save(vehicle);
+    }
+
 }

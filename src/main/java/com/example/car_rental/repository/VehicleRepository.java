@@ -1,10 +1,17 @@
-package com.carrental.carrentalservice.repository; // MEKA WENAS UNA
+package com.example.car_rental.repository; // MEKA WENAS UNA
 
-import com.carrental.carrentalservice.model.Vehicle;
+import com.example.car_rental.model.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+
+
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
+
     long countByStatus(String status);
+    List<Vehicle> findByStatus(String status);
+
 }
