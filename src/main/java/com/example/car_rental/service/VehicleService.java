@@ -1,4 +1,4 @@
-package com.example.car_rental.service; // MEKA WENAS UNA
+package com.example.car_rental.service;
 
 import com.example.car_rental.model.Vehicle;
 import com.example.car_rental.repository.VehicleRepository;
