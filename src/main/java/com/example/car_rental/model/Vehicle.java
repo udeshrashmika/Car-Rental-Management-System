@@ -3,7 +3,6 @@ package com.example.car_rental.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
-
 @Entity
 @Table(name = "vehicles")
 public class Vehicle {
@@ -12,18 +11,18 @@ public class Vehicle {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String type;
+    private String type;       // e.g., Car, Truck
 
-    private String makeModel;
+    private String makeModel;  // e.g., Honda Civic
 
-    @Column(unique = true)
+    @Column(unique = true)     // VIN must be unique
     private String vin;
 
-    private BigDecimal dailyRate;
+    private BigDecimal dailyRate; // e.g., 45.00
 
-    private String status;
+    private String status;     // Available, Rented, In-Maintenance
 
-
+    // --- Constructors ---
     public Vehicle() {
     }
 
@@ -35,7 +34,7 @@ public class Vehicle {
         this.status = status;
     }
 
-
+    // --- Getters and Setters ---
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
