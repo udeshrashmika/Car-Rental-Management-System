@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
         @GetMapping("/login")
         public String showLoginPage() {
-            return "login"; // මෙයින් templates/login.html පිටුව පෙන්වයි
+            return "login";
         }
     }
 

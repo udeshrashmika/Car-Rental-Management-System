@@ -22,13 +22,13 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-
+                        .loginPage("/login") //login page load
                         .defaultSuccessUrl("/", true)
                         .permitAll()
                 )
                 .logout(logout -> logout.permitAll());
 
-        return http.build(); // <--- මෙය ඉතා වැදගත්!
+        return http.build();
     }
 
     @Bean
