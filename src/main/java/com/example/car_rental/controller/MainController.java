@@ -1,15 +1,17 @@
 package com.example.car_rental.controller;
 
+import com.example.car_rental.model.Rental;
 import com.example.car_rental.model.Vehicle;
 import com.example.car_rental.repository.RentalRepository;
 import com.example.car_rental.repository.VehicleRepository;
 import com.example.car_rental.service.RentalService;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -40,12 +42,18 @@ public class MainController {
         model.addAttribute("rentals", rentalRepository.findAll());
 
 
-        model.addAttribute("activeRentals", rentalRepository.findByStatus("Active"));
+        List<Rental> activeRentals = rentalRepository.findAll().stream()
+                .filter(r -> "Active".equalsIgnoreCase(r.getStatus()))
+                .collect(Collectors.toList());
+
+        model.addAttribute("activeRentals", activeRentals);
 
 
         model.addAttribute("totalCount", vehicleRepository.count());
-        model.addAttribute("rentedCount", vehicleRepository.findAll().stream().filter(v -> "RENTED".equals(v.getStatus())).count());
-        model.addAttribute("maintenanceCount", vehicleRepository.findAll().stream().filter(v -> "MAINTENANCE".equals(v.getStatus())).count());
+        model.addAttribute("rentedCount", vehicleRepository.findAll().stream()
+                .filter(v -> "RENTED".equalsIgnoreCase(v.getStatus())).count());
+        model.addAttribute("maintenanceCount", vehicleRepository.findAll().stream()
+                .filter(v -> "MAINTENANCE".equalsIgnoreCase(v.getStatus())).count());
 
         model.addAttribute("newVehicle", new Vehicle());
 
@@ -68,9 +76,7 @@ public class MainController {
                               @RequestParam LocalDate startDate,
                               @RequestParam LocalDate endDate) {
 
-
         rentalService.rentVehicle(customerName, vehicleId, startDate, endDate);
-
         return "redirect:/home";
     }
 
@@ -81,6 +87,7 @@ public class MainController {
         return "redirect:/home";
     }
 
+
     @PostMapping("/vehicle/status")
     public String changeStatus(@RequestParam Long id, @RequestParam String status) {
         Vehicle v = vehicleRepository.findById(id).orElseThrow();
@@ -88,6 +95,4 @@ public class MainController {
         vehicleRepository.save(v);
         return "redirect:/home";
     }
-
-
 }

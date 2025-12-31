@@ -2,107 +2,122 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicle Rental System - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #121212; /* Deep dark background */
-            color: #e0e0e0;
+
+            background: url('/images/bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            padding: 20px;
         }
 
+
         form {
-            background: #1e1e1e; /* Slightly lighter surface color */
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.25); /* විනිවිද පෙනෙන */
+            backdrop-filter: blur(20px);            /* බොඳ කිරීම */
+            -webkit-backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 380px;
-            border: 1px solid #333;
+            max-width: 400px;
+            text-align: center;
         }
 
         h2 {
-            text-align: center;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 1.8rem;
         }
 
         p.subtitle {
-            text-align: center;
-            color: #888;
+            color: #555;
             font-size: 0.9rem;
-            margin-bottom: 2rem;
+            margin-bottom: 30px;
         }
 
-        div {
+
+        .input-group {
             margin-bottom: 20px;
+            text-align: left;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #bbb;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #444;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 12px;
-            background-color: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 6px;
-            color: white;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
+            padding: 12px 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            color: #333;
         }
 
         input:focus {
             outline: none;
-            border-color: #00d4ff; /* Neon blue focus */
-            background-color: #333;
-            box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
+            border-color: #007bff;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
         }
+
 
         button {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #007bff, #00d4ff);
+            background: linear-gradient(135deg, #007bff, #0056b3);
             border: none;
-            border-radius: 6px;
+            border-radius: 50px;
             color: white;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
             transition: transform 0.2s, opacity 0.2s;
         }
 
         button:hover {
             opacity: 0.9;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
-        button:active {
-            transform: translateY(0);
-        }
 
         .footer-links {
-            text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
             font-size: 0.85rem;
+            color: #666;
         }
 
         .footer-links a {
-            color: #00d4ff;
+            color: #007bff;
             text-decoration: none;
+            font-weight: 600;
         }
 
         .footer-links a:hover {
@@ -113,15 +128,16 @@
 <body>
 
 <form th:action="@{/login}" method="post">
+
     <h2>Vehicle Rental</h2>
     <p class="subtitle">Please enter your credentials</p>
 
-    <div>
+    <div class="input-group">
         <label>Username</label>
-        <input type="text" name="username" placeholder="e.g. johndoe" required/>
+        <input type="text" name="username" placeholder="e.g. admin" required/>
     </div>
 
-    <div>
+    <div class="input-group">
         <label>Password</label>
         <input type="password" name="password" placeholder="••••••••" required/>
     </div>
