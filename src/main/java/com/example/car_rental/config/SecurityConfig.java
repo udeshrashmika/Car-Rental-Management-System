@@ -17,8 +17,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+
+                .csrf(csrf -> csrf.disable())
+
                 .authorizeHttpRequests((requests) -> requests
+
                         .requestMatchers("/login", "/css/**", "/js/**", "/images/**").permitAll()
+
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
