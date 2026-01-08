@@ -22,20 +22,23 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests((requests) -> requests
 
-                        .requestMatchers("/login", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/", "/customer/**", "/uploads/**", "/login", "/css/**", "/js/**", "/images/**").permitAll()
+
 
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home", true)
+
+                        .defaultSuccessUrl("/admin/dashboard", true)
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout((logout) -> logout
+                        .logoutSuccessUrl("/")
+                        .permitAll());
 
         return http.build();
     }
-
 
     @Bean
     public UserDetailsService userDetailsService() {
