@@ -4,7 +4,6 @@ import com.example.car_rental.model.Rental;
 import com.example.car_rental.model.Vehicle;
 import com.example.car_rental.repository.RentalRepository;
 import com.example.car_rental.repository.VehicleRepository;
-import com.example.car_rental.service.RentalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
