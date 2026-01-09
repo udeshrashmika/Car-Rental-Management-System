@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to V-RMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .container { display: flex; gap: 40px; }
+        .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 300px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+        .card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.2); }
+        h2 { margin-bottom: 10px; font-size: 1.8rem; }
+        p { opacity: 0.8; font-size: 0.9rem; }
+        .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="/customer" class="card">
+        <span class="icon">🚗</span>
+        <h2>Book a Car</h2>
+        <p>View our available fleet and reserve your vehicle online.</p>
+    </a>
+
+    <a href="/login" class="card">
+        <span class="icon">🔐</span>
+        <h2>Admin Portal</h2>
+        <p>Staff login to manage fleet, approvals, and returns.</p>
+    </a>
+</div>
+
+</body>
+</html>
