@@ -30,7 +30,12 @@ public class AdminController {
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {
+        // 1. මේකෙන් ඔක්කොම රෙන්ටල්ස් ටික ගන්නවා
         List<Rental> allRentals = rentalRepository.findAll();
+
+        // 2. 👇👇👇 අලුතෙන් එකතු කළ කොටස (HISTORY TABLE එකට) 👇👇👇
+        // මේ පේළියෙන් තමයි HTML එකේ තියෙන Table එකට ඩේටා යන්නේ
+        model.addAttribute("rentalHistory", allRentals);
 
         List<Rental> pendingRentals = allRentals.stream()
                 .filter(r -> "PENDING".equalsIgnoreCase(r.getStatus()))
@@ -86,7 +91,7 @@ public class AdminController {
 
         redirectAttributes.addFlashAttribute("message",
                 "✅ Return Successful! Customer: " + rental.getCustomerName() +
-                        " | Final Cost: $" + rental.getTotalCost());
+                        " | Final Cost: Rs. " + rental.getTotalCost());
 
         return "redirect:/admin/dashboard";
     }

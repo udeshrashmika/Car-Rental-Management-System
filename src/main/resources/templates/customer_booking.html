@@ -2,125 +2,240 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Book Your Ride</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Book Your Ride - DriveHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        body { background: #f4f7f6; font-family: 'Poppins', sans-serif; padding: 40px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
+        body {
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-        header { text-align: center; margin-bottom: 40px; }
-        h1 { color: #2c3e50; font-weight: 600; }
-        .back-link { text-decoration: none; color: #555; font-size: 0.9rem; margin-bottom: 20px; display: inline-block; }
-        .back-link:hover { color: #007bff; }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+                        url('/images/cumtomer_booking.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(6px);
+            transform: scale(1.08);
+        }
 
+        header { text-align: center; margin-bottom: 50px; }
 
-        .car-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .brand-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
 
+        .brand-icon { color: #00c6ff; }
+
+        .page-subtitle { color: #eee; font-size: 1.1rem; letter-spacing: 1px; }
+
+        .back-link {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+            z-index: 1000;
+        }
+        .back-link:hover { background: white; color: #333; transform: translateX(-5px); }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
 
         .car-card {
-            background: white; border-radius: 15px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s; display: flex; flex-direction: column;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
         }
-        .car-card:hover { transform: translateY(-5px); }
+        .car-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.3); }
+
         .car-placeholder {
-            height: 180px; background: #e0e0e0; display: flex;
-            align-items: center; justify-content: center; color: #888; font-size: 3rem;
+            height: 180px;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 5rem;
+            position: relative;
         }
-        .car-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .car-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 5px; color: #333; }
-        .car-vin { font-size: 0.8rem; color: #777; margin-bottom: 15px; }
-        .price { color: #27ae60; font-weight: bold; font-size: 1.3rem; margin-bottom: 15px; display: block;}
+
+        .price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #27ae60;
+            padding: 8px 15px;
+            border-radius: 12px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 1rem;
+        }
+
+        .car-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .car-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .car-vin { font-size: 0.85rem; color: #aaa; margin-bottom: 20px; font-weight: 500; }
 
         .book-btn {
-            display: block; width: 100%; padding: 12px; border: none;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white; font-weight: bold; cursor: pointer;
-            border-radius: 8px; transition: 0.2s;
+            display: block; width: 100%; padding: 14px; border: none;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: white; font-weight: 600; cursor: pointer;
+            border-radius: 12px; transition: 0.3s;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 198, 255, 0.3);
         }
-        .book-btn:hover { opacity: 0.9; transform: scale(1.02); }
+        .book-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 198, 255, 0.5); }
 
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content {
+            background: rgba(25, 25, 25, 0.95);
+            padding: 40px;
+            border-radius: 24px;
+            width: 450px;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+        @keyframes slideUp { from {transform: translateY(50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
 
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: white; padding: 30px; border-radius: 15px; width: 400px; position: relative; animation: slideDown 0.3s ease; }
-        @keyframes slideDown { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .close { position: absolute; top: 20px; right: 25px; cursor: pointer; font-size: 1.5rem; color: #aaa; transition: 0.2s; }
+        .close:hover { color: #e74c3c; }
 
-        .close { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 1.5rem; color: #aaa; }
-        .close:hover { color: #000; }
+        label { display: block; margin: 15px 0 8px; font-weight: 500; color: #ccc; font-size: 0.9rem; }
+        input {
+            width: 100%; padding: 12px 15px; border: 1px solid rgba(255,255,255,0.2); border-radius: 10px;
+            background: rgba(255,255,255,0.1); color: white; font-size: 0.95rem; transition: 0.3s;
+        }
+        input:focus { outline: none; border-color: #00c6ff; background: rgba(255,255,255,0.15); box-shadow: 0 0 0 4px rgba(0,198,255,0.1); }
+        input[type="date"] { color-scheme: dark; }
 
-        label { display: block; margin: 10px 0 5px; font-weight: 500; color: #555; }
-        input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .dates-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
         .alert-success {
-            background: #d4edda; color: #155724; padding: 15px; border-radius: 8px;
-            text-align: center; margin-bottom: 30px; border: 1px solid #c3e6cb;
+            background: rgba(46, 204, 113, 0.2); color: #2ecc71; padding: 20px; border-radius: 12px;
+            text-align: center; margin-bottom: 40px; border: 1px solid rgba(46, 204, 113, 0.4);
+            max-width: 800px; width: 100%; backdrop-filter: blur(5px);
         }
+
+        .empty-state { text-align: center; padding: 60px; color: #aaa; }
+        .empty-icon { font-size: 4rem; margin-bottom: 20px; opacity: 0.5; }
+
     </style>
 </head>
 <body>
 
-<a href="/" class="back-link">← Back to Home</a>
+<a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Home</a>
 
 <header>
-    <h1>Available Vehicles</h1>
-    <p style="color: #666;">Choose your preferred car and book instantly.</p>
+    <div class="brand-title">
+        <i class="fas fa-car brand-icon"></i> DriveHub
+    </div>
+    <p class="page-subtitle">Select Your Premium Ride</p>
 </header>
 
 <div th:if="${param.success}" class="alert-success">
-    ✅ Booking Request Sent! The admin will review your license and approve shortly.
+    <h3><i class="fas fa-check-circle"></i> Request Received!</h3>
+    <p>We are reviewing your request. Approval confirmation will be sent shortly.</p>
 </div>
 
 <div class="car-grid" th:if="${!vehicles.empty}">
     <div th:each="v : ${vehicles}" class="car-card">
         <div class="car-placeholder">
-            <i class="fas fa-car"></i>
+            <span class="price-tag" th:text="'Rs. ' + ${v.dailyRate} + '/day'">Rs. 0.00/day</span>
+            <i class="fas fa-car-side"></i>
         </div>
         <div class="car-info">
             <div>
                 <div class="car-title" th:text="${v.makeModel}">Vehicle Name</div>
-                <div class="car-vin" th:text="'VIN: ' + ${v.vin}">VIN: 123</div>
+                <div class="car-vin"><i class="fas fa-barcode"></i> <span th:text="${v.vin}">123</span></div>
             </div>
-            <div>
-                <span class="price" th:text="'$' + ${v.dailyRate} + ' / day'">$0.00 / day</span>
-                <button class="book-btn" th:onclick="'openModal(' + ${v.id} + ')'">Book Now</button>
-            </div>
+            <button class="book-btn" th:onclick="'openModal(' + ${v.id} + ')'">Book Now</button>
         </div>
     </div>
 </div>
 
-<div th:if="${vehicles.empty}" style="text-align: center; padding: 50px; color: #888;">
-    <h2>🚫 No Vehicles Available</h2>
-    <p>All our cars are currently rented or in maintenance. Please check back later.</p>
+<div th:if="${vehicles.empty}" class="empty-state">
+    <i class="fas fa-car-crash empty-icon"></i>
+    <h2>No Vehicles Available</h2>
+    <p>All cars are currently rented. Please check back later.</p>
 </div>
 
 <div id="bookingModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2 style="margin-bottom: 20px; color: #333;">Complete Booking</h2>
+        <h2 style="margin-bottom: 10px; color: #fff;">Complete Booking</h2>
+        <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 20px;">Enter your details to reserve this vehicle.</p>
 
         <form action="/customer/book" method="post" enctype="multipart/form-data">
             <input type="hidden" id="vehicleIdInput" name="vehicleId">
 
             <label>Full Name</label>
-            <input type="text" name="name" placeholder="John Doe" required>
+            <input type="text" name="name" placeholder="Ex: Kasun Perera" required>
 
-            <label>Email</label>
-            <input type="email" name="email" placeholder="john@example.com" required>
+            <div class="dates-row">
+                <div><label>Phone</label><input type="tel" name="phone" placeholder="077xxxxxxx" required></div>
+                <div><label>Email</label><input type="email" name="email" placeholder="name@mail.com" required></div>
+            </div>
 
-            <label>Phone</label>
-            <input type="tel" name="phone" placeholder="+1 234 567 890" required>
-
-            <label>Dates (Start - End)</label>
-            <div style="display: flex; gap: 10px;">
+            <label>Dates (From - To)</label>
+            <div class="dates-row">
                 <input type="date" name="startDate" required>
                 <input type="date" name="endDate" required>
             </div>
 
-            <label>Upload License Photo</label>
+            <label>Upload Driving License (Image)</label>
             <input type="file" name="licenseImage" accept="image/*" required>
 
-            <button type="submit" class="book-btn" style="background: #27ae60; margin-top: 20px;">Submit Request</button>
+            <button type="submit" class="book-btn" style="background: linear-gradient(135deg, #27ae60, #2ecc71); margin-top: 25px;">
+                Confirm Request <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
+            </button>
         </form>
     </div>
 </div>
@@ -134,7 +249,6 @@
     function closeModal() {
         document.getElementById('bookingModal').style.display = 'none';
     }
-
 
     window.onclick = function(event) {
         var modal = document.getElementById('bookingModal');

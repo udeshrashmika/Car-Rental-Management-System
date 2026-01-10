@@ -3,150 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Rental System - Login</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Admin Login - DriveHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
 
         body {
-
-            background: url('/images/bg.jpg') no-repeat center center fixed;
-            background-size: cover;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            background-color: #1a1a1a;
+            position: relative;
+            overflow: hidden;
         }
 
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.45)),
+                        url('/images/admin_login.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(5px);
+            transform: scale(1.05);
+        }
 
         form {
-            background: rgba(255, 255, 255, 0.25); /* විනිවිද පෙනෙන */
-            backdrop-filter: blur(20px);            /* බොඳ කිරීම */
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 50px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             text-align: center;
+            color: #fff;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        h2 {
-            color: #2c3e50;
-            margin-bottom: 5px;
-            font-weight: 600;
-            font-size: 1.8rem;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        p.subtitle {
-            color: #555;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
+        .logo-area { margin-bottom: 25px; }
+        .brand-title {
+            font-size: 2.5rem; font-weight: 700; color: #fff; display: flex; align-items: center; justify-content: center; gap: 12px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
+        .brand-icon { color: #00c6ff; font-size: 2.2rem; }
 
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
+        .subtitle {
+            color: #ccc;
+            font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 500; margin-bottom: 35px; position: relative; display: inline-block;
         }
+        .subtitle::after { content: ''; display: block; width: 40px; height: 3px; background: #00c6ff; margin: 8px auto 0; border-radius: 2px; }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #444;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
+        .input-group { margin-bottom: 25px; text-align: left; }
+        label { display: block; margin-bottom: 8px; color: #eee; font-weight: 500; font-size: 0.85rem; margin-left: 5px; }
 
         input[type="text"],
         input[type="password"] {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-            transition: all 0.3s;
+            width: 100%; padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: #333;
+            border-radius: 12px; font-size: 1rem; transition: all 0.3s;
         }
+        input::placeholder { color: #666; }
 
         input:focus {
-            outline: none;
-            border-color: #007bff;
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+            outline: none; border-color: #00c6ff;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
         }
 
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #333 !important;
+        }
 
         button {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            border: none;
-            border-radius: 50px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-            transition: transform 0.2s, opacity 0.2s;
+            width: 100%; padding: 16px; background: linear-gradient(135deg, #00c6ff, #0072ff); border: none; border-radius: 50px; color: white; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 15px; box-shadow: 0 5px 20px rgba(0, 123, 255, 0.4); transition: 0.3s; letter-spacing: 0.5px;
         }
+        button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 123, 255, 0.6); }
 
-        button:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-
-        .footer-links {
-            margin-top: 25px;
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .footer-links a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
+        .footer-links { margin-top: 30px; font-size: 0.85rem; color: #aaa; }
+        .footer-links a { color: #00c6ff; text-decoration: none; font-weight: 600; margin-left: 5px; transition: 0.2s; }
+        .footer-links a:hover { color: #fff; text-decoration: underline; }
     </style>
 </head>
 <body>
 
 <form th:action="@{/login}" method="post">
-
-    <h2>Vehicle Rental</h2>
-    <p class="subtitle">Please enter your credentials</p>
-
-    <div class="input-group">
-        <label>Username</label>
-        <input type="text" name="username" placeholder="e.g. admin" required/>
+    <div class="logo-area">
+        <div class="brand-title">
+            <i class="fas fa-car brand-icon"></i> DriveHub
+        </div>
+        <p class="subtitle">Administrator Access</p>
     </div>
 
     <div class="input-group">
-        <label>Password</label>
-        <input type="password" name="password" placeholder="••••••••" required/>
+        <label><i class="fas fa-user"></i> Username</label>
+        <input type="text" name="username" placeholder="Enter admin username" required/>
     </div>
 
-    <button type="submit">Login to Account</button>
+    <div class="input-group">
+        <label><i class="fas fa-lock"></i> Password</label>
+        <input type="password" name="password" placeholder="Enter password" required/>
+    </div>
+
+    <button type="submit">Secure Login <i class="fas fa-arrow-right" style="margin-left:8px;"></i></button>
 
     <div class="footer-links">
-        <span>Don't have an account?</span>
-        <a href="#">Register here</a>
+        <span>Restricted Area.</span>
+        <a href="#">Need Help?</a>
     </div>
 </form>
 
