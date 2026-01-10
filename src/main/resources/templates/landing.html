@@ -2,51 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to V-RMS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to DriveHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
         body {
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+                        url('/images/landing.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
         }
-        .container { display: flex; gap: 40px; }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #eeeeee;
+            margin-bottom: 60px;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+        }
+
+        .container {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            width: 300px;
-            transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 50px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 320px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             text-decoration: none;
             color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.2); }
-        h2 { margin-bottom: 10px; font-size: 1.8rem; }
-        p { opacity: 0.8; font-size: 0.9rem; }
-        .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.03);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon-box {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: transform 0.4s;
+        }
+
+        .admin-icon {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card:hover .icon-box { transform: scale(1.1) rotate(5deg); }
+
+        h2 { margin-bottom: 15px; font-size: 1.6rem; font-weight: 600; }
+        p { opacity: 0.9; font-size: 0.95rem; line-height: 1.6; color: #f0f0f0; }
+
+        .action-text {
+            margin-top: 25px;
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .card:hover .action-text {
+            background: white;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(255,255,255,0.4);
+        }
     </style>
 </head>
 <body>
 
+<div style="margin-bottom: 20px;">
+    <i class="fas fa-car" style="font-size: 3.5rem; color: #00c6ff; margin-bottom: 15px; text-shadow: 0 0 20px rgba(0,198,255,0.6);"></i>
+    <h1 class="hero-title">DriveHub</h1>
+    <p class="hero-subtitle">Premium Rental Experience</p>
+</div>
+
 <div class="container">
     <a href="/customer" class="card">
-        <span class="icon">🚗</span>
+        <i class="fas fa-car-side icon-box"></i>
         <h2>Book a Car</h2>
-        <p>View our available fleet and reserve your vehicle online.</p>
+        <p>Find the perfect vehicle for your journey. Fast, easy, and reliable booking.</p>
+        <span class="action-text">Browse Fleet &rarr;</span>
     </a>
 
     <a href="/login" class="card">
-        <span class="icon">🔐</span>
+        <i class="fas fa-user-astronaut icon-box admin-icon"></i>
         <h2>Admin Portal</h2>
-        <p>Staff login to manage fleet, approvals, and returns.</p>
+        <p>Authorized access for fleet management, returns, and system controls.</p>
+        <span class="action-text">Secure Login &rarr;</span>
     </a>
 </div>
 
