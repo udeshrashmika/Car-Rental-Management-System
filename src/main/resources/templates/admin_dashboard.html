@@ -60,43 +60,26 @@
         }
 
         .header-left { display: flex; align-items: center; gap: 30px; }
-
         .brand-area { display: flex; align-items: center; gap: 10px; }
-        .brand-title-header {
-            font-size: 2.2rem; font-weight: 800; color: #fff; letter-spacing: 1px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-        }
+        .brand-title-header { font-size: 2.2rem; font-weight: 800; color: #fff; letter-spacing: 1px; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
         .brand-icon-header { color: #00c6ff; font-size: 2rem; text-shadow: 0 2px 8px rgba(0,198,255,0.4); }
 
-        .admin-title-area {
-            display: flex; align-items: center; gap: 12px;
-            padding-left: 30px; border-left: 2px solid rgba(255,255,255,0.15);
-        }
+        .admin-title-area { display: flex; align-items: center; gap: 12px; padding-left: 30px; border-left: 2px solid rgba(255,255,255,0.15); }
         .admin-title-area h2 { font-size: 1.1rem; margin-bottom: 0; color: #eee; }
 
         .logout-btn {
-            color: #fff;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            color: #fff; background: linear-gradient(135deg, #e74c3c, #c0392b); padding: 10px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
         }
         .logout-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(231, 76, 60, 0.6); }
 
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; padding: 30px 40px 10px 40px; }
-
-        .stat-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(10px);
-            padding: 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.15); transition: transform 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
+        .stat-card { background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(10px); padding: 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.15); transition: transform 0.3s; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .stat-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.3); }
-
         .stat-num { font-size: 2.2rem; font-weight: 700; margin: 10px 0; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
         .stat-label { font-size: 0.85rem; color: #eee; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
         .tabs { display: flex; background: rgba(0, 0, 0, 0.15); padding: 0 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.15); margin-top: 20px; }
-        .tab-btn {
-            padding: 18px 25px; border: none; background: none; cursor: pointer; font-size: 1rem; color: #ccc; font-weight: 600; border-bottom: 3px solid transparent; transition: 0.3s; text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }
+        .tab-btn { padding: 18px 25px; border: none; background: none; cursor: pointer; font-size: 1rem; color: #ccc; font-weight: 600; border-bottom: 3px solid transparent; transition: 0.3s; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
         .tab-btn.active { color: #00c6ff; border-bottom: 3px solid #00c6ff; text-shadow: 0 0 10px rgba(0, 198, 255, 0.6); }
         .tab-btn:hover { color: #fff; }
 
@@ -104,12 +87,7 @@
         .content.active { display: block; }
         @keyframes slideUpFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .table-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 15px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
+        .table-container { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border-radius: 15px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); }
         table { width: 100%; border-collapse: collapse; color: #fff; }
         th { background: rgba(255, 255, 255, 0.15); color: #fff; padding: 18px; text-align: left; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
         td { padding: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.95rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
@@ -119,37 +97,20 @@
         .btn { padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer; color: white; font-size: 0.85rem; font-weight: 500; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .approve { background: linear-gradient(135deg, #2ecc71, #27ae60); }
         .reject { background: linear-gradient(135deg, #e74c3c, #c0392b); }
-
-        .view-img {
-            color: #00c6ff; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; background: rgba(0, 198, 255, 0.15); padding: 6px 12px; border-radius: 6px; transition: 0.3s;
-        }
+        .view-img { color: #00c6ff; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 5px; background: rgba(0, 198, 255, 0.15); padding: 6px 12px; border-radius: 6px; transition: 0.3s; }
         .view-img:hover { background: rgba(0, 198, 255, 0.3); color: #fff; }
 
         .status-badge { padding: 5px 12px; border-radius: 15px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
         .status-completed { background: rgba(255, 255, 255, 0.2); color: #eee; border: 1px solid rgba(255,255,255,0.3); }
         .status-active { background: rgba(0, 198, 255, 0.15); color: #00c6ff; border: 1px solid rgba(0, 198, 255, 0.3); }
-
-        .status-overdue {
-            background: rgba(231, 76, 60, 0.2);
-            color: #e74c3c;
-            border: 1px solid rgba(231, 76, 60, 0.3);
-            margin-left: 10px;
-            animation: pulse 1.5s infinite;
-        }
+        .status-overdue { background: rgba(231, 76, 60, 0.2); color: #e74c3c; border: 1px solid rgba(231, 76, 60, 0.3); margin-left: 10px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.6; } 100% { opacity: 1; } }
 
-        .glass-form {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+        .glass-form { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); margin-top: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 15px; }
-
-        input, select {
-            width: 100%; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; outline: none; transition: 0.3s;
-        }
-        input::placeholder { color: #ddd; }
+        input, select { width: 100%; padding: 12px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 10px; background: rgba(255, 255, 255, 0.1); color: #fff; outline: none; transition: 0.3s; }
         input:focus, select:focus { border-color: #00c6ff; background: rgba(255, 255, 255, 0.2); box-shadow: 0 0 0 3px rgba(0, 198, 255, 0.2); }
         select option { background: #333; color: white; }
-
         .add-btn { background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; border: none; padding: 12px 25px; border-radius: 50px; cursor: pointer; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3); transition: 0.3s;}
 
         h3 { color: #fff; font-weight: 600; margin-bottom: 20px; border-left: 4px solid #00c6ff; padding-left: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
@@ -160,40 +121,20 @@
 <div class="container">
     <header>
         <div class="header-left">
-            <div class="brand-area">
-                <i class="fas fa-car brand-icon-header"></i>
-                <span class="brand-title-header">DriveHub</span>
-            </div>
+            <div class="brand-area"><i class="fas fa-car brand-icon-header"></i><span class="brand-title-header">DriveHub</span></div>
             <div class="admin-title-area">
-                <div style="background: rgba(0,198,255,0.2); padding: 8px; border-radius: 10px;">
-                    <i class="fas fa-shield-alt fa-lg" style="color: #00c6ff;"></i>
-                </div>
-                <div>
-                    <h2>Admin Portal</h2>
-                    <span style="font-size: 0.75rem; color: #eee; letter-spacing: 1px;">SYSTEM MANAGER</span>
-                </div>
+                <div style="background: rgba(0,198,255,0.2); padding: 8px; border-radius: 10px;"><i class="fas fa-shield-alt fa-lg" style="color: #00c6ff;"></i></div>
+                <div><h2>Admin Portal</h2><span style="font-size: 0.75rem; color: #eee; letter-spacing: 1px;">SYSTEM MANAGER</span></div>
             </div>
         </div>
         <a href="/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </header>
 
     <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-label">Total Revenue</div>
-            <div class="stat-num" style="color: #2ecc71;" th:text="'Rs. ' + ${totalRevenue}">Rs. 0</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">Total Fleet</div>
-            <div class="stat-num" th:text="${totalCount}">0</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">Rented Out</div>
-            <div class="stat-num" style="color: #f39c12;" th:text="${rentedCount}">0</div>
-        </div>
-        <div class="stat-card">
-            <div class="stat-label">Pending Req</div>
-            <div class="stat-num" style="color: #e74c3c;" th:text="${pendingRentals.size()}">0</div>
-        </div>
+        <div class="stat-card"><div class="stat-label">Total Revenue</div><div class="stat-num" style="color: #2ecc71;" th:text="'Rs. ' + ${totalRevenue}">Rs. 0</div></div>
+        <div class="stat-card"><div class="stat-label">Total Fleet</div><div class="stat-num" th:text="${totalCount}">0</div></div>
+        <div class="stat-card"><div class="stat-label">Rented Out</div><div class="stat-num" style="color: #f39c12;" th:text="${rentedCount}">0</div></div>
+        <div class="stat-card"><div class="stat-label">Pending Req</div><div class="stat-num" style="color: #e74c3c;" th:text="${pendingRentals.size()}">0</div></div>
     </div>
 
     <div class="tabs">
@@ -215,24 +156,13 @@
                     </td>
                     <td th:text="${r.vehicle.makeModel}" style="color: #00c6ff;"></td>
                     <td th:text="${r.startDate} + ' ➝ ' + ${r.endDate}" style="font-size:0.9rem;"></td>
-                    <td>
-                        <a th:if="${r.licenseImage != null}" th:href="@{'/uploads/' + ${r.licenseImage}}" target="_blank" class="view-img">
-                            <i class="fas fa-id-card"></i> View ID
-                        </a>
-                        <span th:if="${r.licenseImage == null}" style="color:#bbb;">No Upload</span>
-                    </td>
+                    <td><a th:if="${r.licenseImage != null}" th:href="@{'/uploads/' + ${r.licenseImage}}" target="_blank" class="view-img"><i class="fas fa-id-card"></i> View ID</a></td>
                     <td style="display:flex; gap:10px;">
-                        <form action="/admin/approve" method="post">
-                            <input type="hidden" name="rentalId" th:value="${r.id}">
-                            <button class="btn approve"><i class="fas fa-check"></i></button>
-                        </form>
-                        <form action="/admin/reject" method="post">
-                            <input type="hidden" name="rentalId" th:value="${r.id}">
-                            <button class="btn reject"><i class="fas fa-times"></i></button>
-                        </form>
+                        <form action="/admin/approve" method="post"><input type="hidden" name="rentalId" th:value="${r.id}"><button class="btn approve"><i class="fas fa-check"></i></button></form>
+                        <form action="/admin/reject" method="post"><input type="hidden" name="rentalId" th:value="${r.id}"><button class="btn reject"><i class="fas fa-times"></i></button></form>
                     </td>
                 </tr>
-                <tr th:if="${pendingRentals.empty}"><td colspan="5" style="text-align:center; padding:50px; color:#ddd;">No pending requests at the moment.</td></tr>
+                <tr th:if="${pendingRentals.empty}"><td colspan="5" style="text-align:center; padding:50px; color:#ddd;">No pending requests.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -246,31 +176,17 @@
 
         <div id="addForm" class="glass-form" style="display:none;">
             <h4 style="margin-bottom: 15px; color: #00c6ff;">Add New Vehicle</h4>
-
             <form action="/admin/addVehicle" method="post" enctype="multipart/form-data">
-                <div class="form-row">
-                    <input type="text" name="makeModel" placeholder="Vehicle Make & Model (e.g. Toyota Axio)" required>
-                    <input type="text" name="vin" placeholder="License Plate / VIN" required>
-                </div>
-                <div class="form-row">
-                    <input type="number" name="dailyRate" placeholder="Daily Rate (Rs.)" required>
-                    <select name="status">
-                        <option value="AVAILABLE">✅ Available</option>
-                        <option value="MAINTENANCE">⚠️ Maintenance</option>
-                    </select>
-                </div>
-                <div class="form-row" style="align-items: center;">
-                    <label style="color: #ccc; font-weight: 600;">Vehicle Image:</label>
-                    <input type="file" name="vehicleImage" accept="image/*" required style="padding: 9px;">
-                </div>
-
+                <div class="form-row"><input type="text" name="makeModel" placeholder="Make & Model" required><input type="text" name="vin" placeholder="License Plate" required></div>
+                <div class="form-row"><input type="number" name="dailyRate" placeholder="Daily Rate" required><select name="status"><option value="AVAILABLE">Available</option><option value="MAINTENANCE">Maintenance</option></select></div>
+                <div class="form-row" style="align-items: center;"><label style="color: #ccc; font-weight: 600;">Vehicle Image:</label><input type="file" name="vehicleImage" accept="image/*" required style="padding: 9px;"></div>
                 <button type="submit" class="add-btn" style="width: 100%;">Save to Fleet</button>
             </form>
         </div>
 
         <div class="table-container">
             <table>
-                <thead><tr><th>Vehicle</th><th>License Plate</th><th>Rate/Day</th><th>Status</th><th>Quick Action</th></tr></thead>
+                <thead><tr><th>Vehicle</th><th>License Plate</th><th>Rate/Day</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>
                 <tr th:each="v : ${vehicles}">
                     <td th:text="${v.makeModel}" style="font-weight: 600; font-size: 1rem;"></td>
@@ -281,9 +197,16 @@
                         <span th:if="${v.status == 'RENTED'}" style="background:rgba(231, 76, 60, 0.2); color:#e74c3c; padding:5px 12px; border-radius:15px; font-size:0.75rem; font-weight:700;">RENTED</span>
                         <span th:if="${v.status == 'MAINTENANCE'}" style="background:rgba(241, 196, 15, 0.2); color:#f1c40f; padding:5px 12px; border-radius:15px; font-size:0.75rem; font-weight:700;">MAINTENANCE</span>
                     </td>
-                    <td>
+                    <td style="display: flex; gap: 10px;">
                         <form th:if="${v.status == 'MAINTENANCE'}" action="/admin/vehicle/status" method="post"><input type="hidden" name="id" th:value="${v.id}"><input type="hidden" name="status" value="AVAILABLE"><button class="btn approve">Finish Repair</button></form>
                         <form th:if="${v.status == 'AVAILABLE'}" action="/admin/vehicle/status" method="post"><input type="hidden" name="id" th:value="${v.id}"><input type="hidden" name="status" value="MAINTENANCE"><button class="btn reject" style="background: linear-gradient(135deg, #f39c12, #d35400);">Service</button></form>
+
+                        <form action="/admin/vehicle/delete" method="post" onsubmit="confirmDelete(event)">
+                            <input type="hidden" name="id" th:value="${v.id}">
+                            <button type="submit" class="btn reject" style="background: #e74c3c; padding: 8px 12px;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>
@@ -300,30 +223,16 @@
                     <option value="" disabled selected>Choose customer...</option>
                     <option th:each="r : ${activeRentals}" th:value="${r.id}" th:text="${r.customerName} + ' | ' + ${r.vehicle.makeModel} + ' (Due: ' + ${r.endDate} + ')'"></option>
                 </select>
-                <button type="submit" class="add-btn" style="width:100%; padding: 15px; font-size: 1rem; background: linear-gradient(135deg, #27ae60, #2ecc71);">
-                    <i class="fas fa-check-circle"></i> Confirm Return & Calculate Final Cost
-                </button>
+                <button type="submit" class="add-btn" style="width:100%; padding: 15px; font-size: 1rem; background: linear-gradient(135deg, #27ae60, #2ecc71);">Confirm Return & Calculate Cost</button>
             </form>
         </div>
 
         <h3 style="margin-top: 50px; border-left-color: #f39c12;">Rental History</h3>
-
         <div class="table-container">
             <table>
-                <thead>
-                <tr>
-                    <th>Customer</th>
-                    <th>Vehicle</th>
-                    <th>Start Date</th>
-                    <th>Return Date</th>
-                    <th>Status</th>
-                    <th>Total Cost</th>
-                </tr>
-                </thead>
+                <thead><tr><th>Customer</th><th>Vehicle</th><th>Start</th><th>Return</th><th>Status</th><th>Cost</th></tr></thead>
                 <tbody id="historyTableBody">
-                <tr th:if="${rentalHistory == null || rentalHistory.empty}">
-                    <td colspan="6" style="text-align:center; padding:30px; color:#aaa;">No history available.</td>
-                </tr>
+                <tr th:if="${rentalHistory == null || rentalHistory.empty}"><td colspan="6" style="text-align:center; padding:30px; color:#aaa;">No history available.</td></tr>
                 <tr th:each="h : ${rentalHistory}">
                     <td th:text="${h.customerName}" style="font-weight:600;"></td>
                     <td th:text="${h.vehicle.makeModel}" style="color: #ccc;"></td>
@@ -370,16 +279,36 @@
         form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
     }
 
+    function confirmDelete(event) {
+        event.preventDefault();
+
+        const form = event.target;
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e74c3c',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!',
+            background: '#333',
+            color: '#fff'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.submit();
+            }
+        });
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         const today = new Date().toISOString().slice(0, 10);
         const rows = document.querySelectorAll("#historyTableBody tr");
-
         rows.forEach(row => {
             if(row.cells.length > 4) {
                 const returnDateText = row.cells[3].innerText.trim();
                 const statusCell = row.cells[4];
                 const statusText = statusCell.innerText.trim();
-
                 if (statusText === "ACTIVE" && returnDateText < today && returnDateText !== "") {
                     const alertBadge = document.createElement("span");
                     alertBadge.className = "status-badge status-overdue";

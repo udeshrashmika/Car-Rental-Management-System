@@ -52,10 +52,16 @@ public class AdminController {
                 .collect(Collectors.toList());
         model.addAttribute("activeRentals", activeRentals);
 
-        model.addAttribute("vehicles", vehicleRepository.findAll());
+        List<Vehicle> activeVehicles = vehicleRepository.findAll().stream()
+                .filter(v -> !"DELETED".equals(v.getStatus()))
+                .collect(Collectors.toList());
+        model.addAttribute("vehicles", activeVehicles);
+
         model.addAttribute("newVehicle", new Vehicle());
 
-        model.addAttribute("totalCount", vehicleRepository.count());
+        long count = activeVehicles.size();
+        model.addAttribute("totalCount", count);
+
         model.addAttribute("rentedCount", vehicleRepository.countByStatus("RENTED"));
         model.addAttribute("maintenanceCount", vehicleRepository.countByStatus("MAINTENANCE"));
 
@@ -93,27 +99,24 @@ public class AdminController {
                         " | Final Cost: Rs. " + rental.getTotalCost());
         return "redirect:/admin/dashboard";
     }
+
     @PostMapping("/addVehicle")
     public String addVehicle(@ModelAttribute Vehicle vehicle,
                              @RequestParam("vehicleImage") MultipartFile file) {
         try {
-
             if (!file.isEmpty()) {
                 String fileName = fileStorageService.storeFile(file);
                 vehicle.setImage(fileName);
             }
 
-
             if (vehicle.getStatus() == null || vehicle.getStatus().isEmpty()) {
                 vehicle.setStatus("AVAILABLE");
             }
-
             vehicleRepository.save(vehicle);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return "redirect:/admin/dashboard";
     }
 
@@ -122,6 +125,17 @@ public class AdminController {
         Vehicle v = vehicleRepository.findById(id).orElseThrow();
         v.setStatus(status);
         vehicleRepository.save(v);
+        return "redirect:/admin/dashboard";
+    }
+
+    @PostMapping("/vehicle/delete")
+    public String deleteVehicle(@RequestParam Long id, RedirectAttributes redirectAttributes) {
+        Vehicle v = vehicleRepository.findById(id).orElseThrow();
+        v.setStatus("DELETED");
+        vehicleRepository.save(v);
+
+        redirectAttributes.addFlashAttribute("message", "✅ Vehicle removed from fleet successfully!");
+
         return "redirect:/admin/dashboard";
     }
 }
