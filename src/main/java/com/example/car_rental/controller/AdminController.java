@@ -4,12 +4,14 @@ import com.example.car_rental.model.Rental;
 import com.example.car_rental.model.Vehicle;
 import com.example.car_rental.repository.RentalRepository;
 import com.example.car_rental.repository.VehicleRepository;
+import com.example.car_rental.service.FileStorageService;
 import com.example.car_rental.service.RentalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,20 +23,23 @@ public class AdminController {
     private final VehicleRepository vehicleRepository;
     private final RentalRepository rentalRepository;
     private final RentalService rentalService;
+    private final FileStorageService fileStorageService;
 
-    public AdminController(VehicleRepository vehicleRepository, RentalRepository rentalRepository, RentalService rentalService) {
+    public AdminController(VehicleRepository vehicleRepository,
+                           RentalRepository rentalRepository,
+                           RentalService rentalService,
+                           FileStorageService fileStorageService) {
         this.vehicleRepository = vehicleRepository;
         this.rentalRepository = rentalRepository;
         this.rentalService = rentalService;
+        this.fileStorageService = fileStorageService;
     }
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {
-        // 1. මේකෙන් ඔක්කොම රෙන්ටල්ස් ටික ගන්නවා
+
         List<Rental> allRentals = rentalRepository.findAll();
 
-        // 2. 👇👇👇 අලුතෙන් එකතු කළ කොටස (HISTORY TABLE එකට) 👇👇👇
-        // මේ පේළියෙන් තමයි HTML එකේ තියෙන Table එකට ඩේටා යන්නේ
         model.addAttribute("rentalHistory", allRentals);
 
         List<Rental> pendingRentals = allRentals.stream()
@@ -60,7 +65,6 @@ public class AdminController {
         return "admin_dashboard";
     }
 
-
     @PostMapping("/approve")
     public String approveRental(@RequestParam Long rentalId) {
         Rental rental = rentalRepository.findById(rentalId).orElseThrow();
@@ -69,7 +73,6 @@ public class AdminController {
         Vehicle v = rental.getVehicle();
         v.setStatus("RENTED");
         vehicleRepository.save(v);
-
         return "redirect:/admin/dashboard";
     }
 
@@ -81,27 +84,36 @@ public class AdminController {
         return "redirect:/admin/dashboard";
     }
 
-
     @PostMapping("/return")
     public String returnVehicle(@RequestParam Long rentalId, RedirectAttributes redirectAttributes) {
-
         rentalService.returnVehicle(rentalId);
-
         Rental rental = rentalRepository.findById(rentalId).orElseThrow();
-
         redirectAttributes.addFlashAttribute("message",
                 "✅ Return Successful! Customer: " + rental.getCustomerName() +
                         " | Final Cost: Rs. " + rental.getTotalCost());
-
         return "redirect:/admin/dashboard";
     }
-
     @PostMapping("/addVehicle")
-    public String addVehicle(@ModelAttribute Vehicle vehicle) {
-        if (vehicle.getStatus() == null || vehicle.getStatus().isEmpty()) {
-            vehicle.setStatus("AVAILABLE");
+    public String addVehicle(@ModelAttribute Vehicle vehicle,
+                             @RequestParam("vehicleImage") MultipartFile file) {
+        try {
+
+            if (!file.isEmpty()) {
+                String fileName = fileStorageService.storeFile(file);
+                vehicle.setImage(fileName);
+            }
+
+
+            if (vehicle.getStatus() == null || vehicle.getStatus().isEmpty()) {
+                vehicle.setStatus("AVAILABLE");
+            }
+
+            vehicleRepository.save(vehicle);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        vehicleRepository.save(vehicle);
+
         return "redirect:/admin/dashboard";
     }
 
