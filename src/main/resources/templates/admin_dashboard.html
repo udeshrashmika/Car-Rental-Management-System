@@ -243,9 +243,11 @@
             <h3>Fleet Status</h3>
             <button onclick="toggleForm()" class="add-btn"><i class="fas fa-plus"></i> Add New Vehicle</button>
         </div>
+
         <div id="addForm" class="glass-form" style="display:none;">
             <h4 style="margin-bottom: 15px; color: #00c6ff;">Add New Vehicle</h4>
-            <form action="/admin/addVehicle" method="post">
+
+            <form action="/admin/addVehicle" method="post" enctype="multipart/form-data">
                 <div class="form-row">
                     <input type="text" name="makeModel" placeholder="Vehicle Make & Model (e.g. Toyota Axio)" required>
                     <input type="text" name="vin" placeholder="License Plate / VIN" required>
@@ -257,9 +259,15 @@
                         <option value="MAINTENANCE">⚠️ Maintenance</option>
                     </select>
                 </div>
+                <div class="form-row" style="align-items: center;">
+                    <label style="color: #ccc; font-weight: 600;">Vehicle Image:</label>
+                    <input type="file" name="vehicleImage" accept="image/*" required style="padding: 9px;">
+                </div>
+
                 <button type="submit" class="add-btn" style="width: 100%;">Save to Fleet</button>
             </form>
         </div>
+
         <div class="table-container">
             <table>
                 <thead><tr><th>Vehicle</th><th>License Plate</th><th>Rate/Day</th><th>Status</th><th>Quick Action</th></tr></thead>
