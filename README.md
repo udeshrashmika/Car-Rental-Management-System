@@ -64,7 +64,7 @@ Once the application started (look for "Started CarRentalApplication..." in logs
       http://localhost:8080/login
 
       *Default Credentials:*
-      Username: admin
+      Username: admin, ADMIN
       Password: 1234
       
 7. TROUBLESHOOTING
